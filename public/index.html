@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>本地控制台</title><link rel="stylesheet" href="/style.css"><script src="/app.js" defer></script></head>
+<body>
+<header><div><span class="badge">LOCAL CONTROL</span><h1>本地控制台</h1><p>在浏览器里，管理你的 Mac 文件和命令。</p></div><button id="disconnect" hidden>断开连接</button></header>
+<main>
+<section id="pair" class="card pairing"><h2>连接本地代理</h2><p>粘贴启动代理时，终端显示的临时配对码。配对码仅保存在此页面内存中。</p><form id="pair-form"><label for="token">临时配对码</label><input id="token" type="password" autocomplete="off" required placeholder="输入配对码"><button type="submit" class="primary">连接我的电脑</button></form></section>
+<div id="workspace" hidden>
+<div class="connection"><span class="dot"></span><strong>已连接本地代理</strong><span id="system"></span><code id="root"></code></div>
+<div class="grid">
+<section class="card files"><div class="title"><h2>文件管理</h2><button id="refresh">刷新</button></div><div class="toolbar"><button id="up">上一级</button><code id="directory">.</code></div><div class="toolbar"><button id="new-file">新建文件</button><button id="new-directory">新建文件夹</button></div><ul id="file-list"></ul><p class="hint">文件操作限定在启动时指定的工作目录。支持 UTF-8 文本，最大 1 MB。</p></section>
+<section class="card editor"><div class="title"><h2>文本编辑器</h2><button id="save" class="primary" disabled>保存文件</button></div><code id="file-path">选择一个文本文件</code><textarea id="content" spellcheck="false" disabled aria-label="文件内容"></textarea></section>
+</div>
+<section class="card terminal"><div class="title"><h2>终端命令</h2><span id="command-state">准备就绪</span></div><p class="hint">命令以你的账户权限运行，可访问工作目录之外的内容。支持一次性命令，超时 30 秒；不支持交互输入或持续后台服务。</p><form id="command-form"><label for="command">执行目录：<code id="command-cwd">.</code></label><div class="command-row"><input id="command" required autocomplete="off" spellcheck="false" placeholder="例如：pwd 或 ls -la"><button id="execute" type="submit" class="primary">执行命令</button></div></form><pre id="output" aria-label="命令输出">命令结果会显示在这里。</pre></section>
+</div>
+<p id="status" role="status" aria-live="polite"></p>
+</main><footer>本机连接 · 临时配对 · 关闭终端代理即可停止服务</footer>
+</body></html>
